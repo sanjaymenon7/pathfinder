@@ -1,0 +1,156 @@
+<div ng-controller="QuestionCtrl">
+
+
+    <div class="container innerdiv-background" ng-show="showQuestion">
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2 center-block">
+                <h1>LEVEL-{{level}}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"><h3>Timer:</h3><h4><timer  autostart="false" countdown="levelTimer" interval="1000" finish-callback="callbackTimer.finished()">{{milliseconds}} {{millis}} MilliSeconds</timer></h4> </div>
+            <div class="col-md-6 center-block" ng-show="showGrid = true">
+                <table id="questionTable">
+                    <tr ng-repeat="i in getNumber(numOfRows) " data-value-row="{{$index }}">
+                        <td ng-repeat="j in getNumber(numOfCols) " data-value-col="{{$index }}"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-3">
+                <input type="button" ng-click="generateQuestion()" value="Start Level" class="btn btn-primary btn-lg"/>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-3 center-block">
+
+            </div>
+        </div>
+    </div>
+    <div class="container" ng-show="showLogo">
+        <div class="row">
+            <div class="col-md-12 center-block">
+                <img src="../img/pathfinder.png" class="img-responsive" alt="Game Logo">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2 center-block">
+                <input type="button" ng-click="startGame()" value="Enter Game" class="btn btn-primary btn-lg"/>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+    </div>
+    <div class="container innerdiv-background" ng-show="endGame">
+        <div class="row">
+            <div class="col-md-6 center-block">
+                <img src="../img/pathfinder.png" alt="Game Logo">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2 center-block">
+                <h3>Congratulations you have completed the Game!!</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container innerdiv-background" ng-show="showAnswer">
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-3 center-block">
+                <h1>LEVEL-{{level}}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"><h3>Let the path finding Begin!!</h3></div>
+            <div class="col-md-6 center-block" ng-show="showGrid = true">
+                <table id="answerTable">
+                    <tr ng-repeat="i in getNumber(numOfRows)" answer-data-value-row="{{$index }}">
+                        <td ng-repeat="j in getNumber(numOfCols)" answer-data-value-col="{{$index }}" ng-click="validateAnswer($event)"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-3">
+                <div ng-show="showWhenWrong">
+                    <b>Oops! You have selected the wrong path!!</b><br/>
+                    You have correctly followed {{percentageCorrect}}% of the path!<br/>
+                    Please click here to enter your name in the leaderboard<br/><br/>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                        Go to Leader Board
+                    </button>
+                </div>
+                <div ng-show="showWhenFinish">
+                    <button type="button" class="btn btn-primary btn-lg" ng-click="finishGame()">
+                        Try Again!
+                    </button>
+                </div>
+                <div ng-show="showWhenRight">
+                    <b>Good Job! You have completed this level!!</b><br/>
+                    <button type="button" class="btn btn-primary btn-lg" ng-click="goToNextLevel()">
+                        Go to the next level
+                    </button>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" style="text-align: center">
+                <h3>Trace Back the Path!</h3>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Name</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Total Points</strong>
+                        </div>
+                    </div>
+                    <div class="row" ng-repeat="x in leaderBoard track by $index">
+                        <div class="col-md-6">
+                            {{ x.name }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ x.points }}
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <form name ="leaderboardform" novalidate ng-show="showLeaderBoardForm">
+                    <div class="row">
+                        <div class="col-md-6"> Name:<br>
+                            <input type="text" ng-model="userDetails.name" name="playername" required>
+                            <p ng-show="leaderboardform.playername.$error.required" style="color:red">Your username is required.</p><br/>
+                        </div>
+                        <div class="col-lg-6">
+                            <button ng-click="addToLeaderBoard()" class="btn btn-primary" ng-disabled="leaderboardform.playername.$dirty && leaderboardform.playername.$invalid">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

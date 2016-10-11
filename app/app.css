@@ -1,0 +1,61 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.unselected{
+  background-color: darkgray
+}
+
+.selected-question{
+  background-color: lightcoral ;
+}
+
+.selected-answer-correct{
+  background-color: green;
+}
+
+.selected-answer-wrong{
+  background-color: red;
+}
+
+.body-background{
+  background-color: #7a0000;
+}
+
+.innerdiv-background{
+  background-color: #a31919;
+  margin-top: 2%;
+  padding-bottom: 1%;
+  color: whitesmoke;
+}
+table{
+  height: 100vh;
+}
+
+td { width:150px;  border:1px solid #333;background-color: darkgray}
+td.a { background-color:red; }
+td.b { background-color:blue; }
+td.c { background-color:purple; }
+td.d { background-color:green; }
