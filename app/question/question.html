@@ -18,7 +18,7 @@
                 </table>
             </div>
             <div class="col-md-3">
-                <input type="button" ng-click="generateQuestion()" value="Start Level" class="btn btn-primary btn-lg"/>
+                <input type="button" ng-click="generateQuestion()" value="Start Level" class="btn btn-warning btn-lg"/>
             </div>
         </div>
         <br/>
@@ -38,7 +38,7 @@
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-2 center-block">
-                <input type="button" ng-click="startGame()" value="Enter Game" class="btn btn-primary btn-lg"/>
+                <input type="button" ng-click="startGame()" value="Enter Game" class="btn btn-warning btn-lg"/>
             </div>
             <div class="col-md-5"></div>
         </div>
@@ -78,18 +78,18 @@
                     You have correctly followed {{percentageCorrect}}% of the path!<br/>
                     Please click here to enter your name in the leaderboard<br/><br/>
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal">
                         Go to Leader Board
                     </button>
                 </div>
                 <div ng-show="showWhenFinish">
-                    <button type="button" class="btn btn-primary btn-lg" ng-click="finishGame()">
+                    <button type="button" class="btn btn-warning btn-lg" ng-click="finishGame()">
                         Try Again!
                     </button>
                 </div>
                 <div ng-show="showWhenRight">
                     <b>Good Job! You have completed this level!!</b><br/>
-                    <button type="button" class="btn btn-primary btn-lg" ng-click="goToNextLevel()">
+                    <button type="button" class="btn btn-warning btn-lg" ng-click="goToNextLevel()">
                         Go to the next level
                     </button>
                 </div>
