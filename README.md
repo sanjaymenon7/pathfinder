@@ -1,43 +1,27 @@
-# angular-seed — the seed for AngularJS apps
+For this application AngularJS framework was used. The reasons behind it is given below
 
-This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
-You can use it to quickly bootstrap your angular webapp projects and dev environment for these
-projects.
+Data-binding − It is the automatic synchronization of data between model and view components.
+Which makes it easier to draw things on the view.
 
-The seed contains a sample AngularJS application and is preconfigured to install the Angular
-framework and a bunch of development and testing tools for instant web development gratification.
+Controller − There is clear seperation between business logic and views.
+In this application we have used only one controller as the logic is in one unit.
+The answer is dependant on the question generated and we are not using any database to store the values.
 
-The seed app doesn't do much, just shows how to wire two controllers and views together.
+Templates − These are the rendered view with information from the controller and model.
+These can be a single file (like index.html) or multiple views in one page using "partials".
+In this application we have used index.html to render the view question.html
 
+Routing − You can add switch between view. In this application we have used only one view as all the data is tightly coupled.
 
-## Getting Started
+Dependency Injection − AngularJS has a built-in dependency injection subsystem that helps the developer by making the application easier
+to develop, understand, and test.
 
-To get you started you can simply clone the angular-seed repository and install the dependencies:
+Also both unit tests and end to end testing can be done if necessary for large applications using jasmine, karma and protractor.
+Currently there are only basic tests defined for this project, but thats because the application is small.
 
-### Prerequisites
+Bootstrap used in the application in order to make it responsive.
 
-You need git to clone the angular-seed repository. You can get git from
-[http://git-scm.com/](http://git-scm.com/).
-
-We also use a number of node.js tools to initialize and test angular-seed. You must have node.js and
-its package manager (npm) installed.  You can get them from [http://nodejs.org/](http://nodejs.org/).
-
-### Clone angular-seed
-
-Clone the angular-seed repository using [git][git]:
-
-```
-git clone https://github.com/angular/angular-seed.git
-cd angular-seed
-```
-
-If you just want to start a new project without the angular-seed commit history then you can do:
-
-```bash
-git clone --depth=1 https://github.com/angular/angular-seed.git <your-project-name>
-```
-
-The `depth=1` tells git to only pull down one commit worth of historical data.
+The steps to run the program is given below.
 
 ### Install Dependencies
 
@@ -80,23 +64,13 @@ Now browse to the app at `http://localhost:8000/index.html`.
 
 ```
 app/                    --> all of the source files for the application
-  app.css               --> default stylesheet
+  components/           --> all app specific bower components
   components/           --> all app specific modules
-    version/              --> version related components
-      version.js                 --> version module declaration and basic "version" value service
-      version_test.js            --> "version" value service tests
-      version-directive.js       --> custom directive that returns the current app version
-      version-directive_test.js  --> version directive tests
-      interpolate-filter.js      --> custom interpolation filter
-      interpolate-filter_test.js --> interpolate filter tests
-  view1/                --> the view1 view template and logic
-    view1.html            --> the partial template
-    view1.js              --> the controller logic
-    view1_test.js         --> tests of the controller
-  view2/                --> the view2 view template and logic
-    view2.html            --> the partial template
-    view2.js              --> the controller logic
-    view2_test.js         --> tests of the controller
+  question/                --> the question view template and logic
+      question.html            --> the partial template
+      question.js              --> the controller logic
+      question_test.js         --> tests of the controller
+  app.css               --> default stylesheet
   app.js                --> main application module
   index.html            --> app layout file (the main html template file of the app)
   index-async.html      --> just like index.html, but loads js files asynchronously

@@ -8,6 +8,12 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/angular-resource/angular-resource.min.js',
+      'bower_components/jquery/dist/jquery.min.js',
+      'bower_components/bootstrap/dist/js/bootstrap.min.js',
+      'bower_components/humanize-duration/humanize-duration.js',
+      'bower_components/moment/moment.js',
+      'bower_components/angular-timer/dist/angular-timer.min.js',
       'components/**/*.js',
       'view*/**/*.js'
     ],
