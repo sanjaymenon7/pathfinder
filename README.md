@@ -11,7 +11,12 @@ Templates − These are the rendered view with information from the controller a
 These can be a single file (like index.html) or multiple views in one page using "partials".
 In this application we have used index.html to render the view question.html
 
-Routing − You can add switch between view. In this application we have used only one view as all the data is tightly coupled.
+Directives − Directives are markers on DOM elements (such as elements, attributes, css, and more).
+These can be used to create custom HTML tags that serve as new, custom widgets. AngularJS has built-in directives (ngBind, ngModel...)
+In this project we have used several directives such as ng-show,ng-repeat,ng-click etc.
+
+Routing − You can add switch between view. In this application we have used only one view as all the data is tightly
+coupled as we are not using any backend services.
 
 Dependency Injection − AngularJS has a built-in dependency injection subsystem that helps the developer by making the application easier
 to develop, understand, and test.
