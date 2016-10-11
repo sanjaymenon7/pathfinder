@@ -60,11 +60,11 @@ angular.module('myApp.question', ['ngRoute'])
 
         };
         $scope.leaderBoard=[
-            {name:"Bruce Wayne",points:589},
-            {name:"Diana Prince",points:502},
-            {name:"Clark Kent",points:452},
-            {name:"Barry Allen",points:433},
-            {name:"Arthur Curry",points:373}
+            {name:"Bruce Wayne",points:100},
+            {name:"Diana Prince",points:95},
+            {name:"Clark Kent",points:88},
+            {name:"Barry Allen",points:76},
+            {name:"Arthur Curry",points:55}
         ]
         $scope.leaderBoard.sort(function(a, b){
             return b.points-a.points;
@@ -72,7 +72,7 @@ angular.module('myApp.question', ['ngRoute'])
         $scope.addToLeaderBoard= function(){
             $scope.userDetails.points = $scope.percentageCorrect;
             $scope.leaderBoard.push($scope.userDetails);
-            $scope.leaderBoard.sort();
+            //$scope.leaderBoard.sort();
             $scope.showLeaderBoardForm=false;
             $scope.showWhenWrong = false;
             $scope.showWhenFinish=true;
@@ -103,7 +103,12 @@ angular.module('myApp.question', ['ngRoute'])
             return Math.floor(Math.random() * (max - min + 1)) + min;
         };
         $scope.getNextTile= function(){
-            var goVerticalorHorizontal = $scope.getRandomInt(0,6);
+            if($scope.questionArray.length == 1){
+                var goVerticalorHorizontal = 0
+            }
+            else{
+                var goVerticalorHorizontal = $scope.getRandomInt(0,6);
+            }
             switch (goVerticalorHorizontal) {
                 case 0:
                     return $scope.goVertical();
@@ -284,8 +289,9 @@ angular.module('myApp.question', ['ngRoute'])
             if( $scope.answerCounter == $scope.answerLength){
                 $scope.rightPathSelected =true;
             }
-
-            if($scope.wrongPathSelected == false && $scope.rightPathSelected == false){
+            var alreadySelected=$(event.target).hasClass("selected-answer-correct");
+            console.log("Already selected"+alreadySelected);
+            if($scope.wrongPathSelected == false && $scope.rightPathSelected == false &&alreadySelected == false){
                 if(correctTile.row==answerCurrentRow && correctTile.col==answerCurrentCol){
                     var myEl = angular.element( document.querySelector("tr[answer-data-value-row='"+answerCurrentRow+"'] td[answer-data-value-col='"+answerCurrentCol+"']") );
                     myEl.addClass('selected-answer-correct');

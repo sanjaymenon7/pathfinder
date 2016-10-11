@@ -4,11 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'ngResource',
-  'myApp.view1',
-  'myApp.view2',
   'myApp.question',
-  'myApp.startpage',
-  'myApp.version',
   'timer'
 ]).
 config(['$locationProvider', '$routeProvider','$resourceProvider', function($locationProvider, $routeProvider,$resourceProvider ) {
