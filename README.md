@@ -69,7 +69,6 @@ Now browse to the app at `http://localhost:8000/index.html`.
 
 ```
 app/                    --> all of the source files for the application
-  components/           --> all app specific bower components
   components/           --> all app specific modules
   question/                --> the question view template and logic
       question.html            --> the partial template
