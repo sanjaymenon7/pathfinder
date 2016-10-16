@@ -9,10 +9,10 @@ angular.module('myApp', [
 ]).
 config(['$locationProvider', '$routeProvider','$resourceProvider', function($locationProvider, $routeProvider,$resourceProvider ) {
   $locationProvider.hashPrefix('!');
-  $locationProvider.html5Mode({
+ /* $locationProvider.html5Mode({
     enabled: true,
     requireBase: false
-  });
+  });*/
 
   $routeProvider.otherwise({redirectTo: '/question'});
 
